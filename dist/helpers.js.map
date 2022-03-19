@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/helpers.ts"],"names":["log","value","console"],"mappings":";;;;;;;AAAA,SAASA,GAAT,CAAaC,KAAb,EAAkC;AAChCC,EAAAA,OAAO,CAACF,GAAR,CAAYC,KAAZ;AACD","sourcesContent":["function log(value: string): void {\n  console.log(value)\n}\n\nexport { log }\n"],"file":"helpers.js"}
