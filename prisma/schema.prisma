@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Fighter {
+  id Int @id @default(autoincrement()) 
+  name String @db.VarChar(50) @unique
+  nick_name String @db.VarChar(50)
+  image String
+  age String @db.VarChar(50)
+  height String @db.VarChar(50)
+  weight String @db.VarChar(50)
+  weight_class String @db.VarChar(50)
+  association String @db.VarChar(50)
+  history Fight[]
+  wins Wins?
+  loses Loses?
+}
+
+model Fight {
+  id Int @id @default(autoincrement())
+  fighter Fighter @relation(fields: [fighter_id], references: [id], onDelete: Cascade)
+  fighter_id Int
+  result String 
+  opponent_name String 
+  event String
+  date String 
+  decision String 
+  round Int
+  time String
+}
+
+model Wins {
+  total_wins Int
+  win_by_kos Int
+  win_by_submissions Int
+  win_by_decisions Int
+  fighter Fighter @relation(fields: [fighter_id], references: [id], onDelete: Cascade)
+  fighter_id Int @unique
+}
+
+model Loses {
+  total_loses Int
+  lose_by_kos Int
+  lose_by_submissions Int
+  lose_by_decisions Int
+  fighter Fighter @relation(fields: [fighter_id], references: [id], onDelete: Cascade)
+  fighter_id Int @unique
+
+}

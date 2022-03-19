@@ -1,0 +1,42 @@
+{
+  "name": "typescript-fundamentals-v3",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "compile": "babel src -d dist --source-maps --extensions '.ts'",
+    "build": "yarn clean && yarn compile",
+    "typecheck": "tsc --p .",
+    "build-typecheck": "yarn build && yarn typecheck",
+    "server": "node dist/index.js",
+    "start": "nodemon --watch ./src  -e .ts --exec 'yarn build-typecheck && yarn server'"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.7",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.21",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0",
+    "prisma": "^3.11.0",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@prisma/client": "3.11.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
+  "engines": {
+    "node": "16.13.2"
+  }
+}
