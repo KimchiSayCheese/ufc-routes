@@ -7,7 +7,6 @@ const app = express()
 const PORT: any = process.env.PORT || 4004
 const prisma = new PrismaClient()
 
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, './../src/views')))
@@ -16,14 +15,11 @@ app.use(
   express.static(path.join(__dirname, './../src/views/favicon.ico'))
 )
 
-
 // Home Page (Not the focus of this project.)
 
 app.get('/', (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, './../src/views/index.html'))
-})ß
-
-
+})
 
 // CRUD Operations
 
