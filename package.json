@@ -11,7 +11,7 @@
     "build-typecheck": "yarn build && yarn typecheck",
     "server": "node dist/index.js",
     "begin": "nodemon --watch ./src  -e .ts --exec 'yarn build-typecheck && yarn server'",
-    "start": "yarn build-typecheck && yarn server"
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
